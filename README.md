@@ -26,6 +26,7 @@ Retrieve a timing feed during live sessions.
 
 #### Response
 ```json
+{
   "head": {
     "championship_id": "3",
     "category": "MotoGP",
@@ -264,7 +265,7 @@ The session ID.
 
 #### Response
 ```json
-
+{
   "date": "2023-03-24T10:45:00+00:00",
   "number": 1,
   "condition": {
@@ -459,7 +460,7 @@ The category ID.
 ```
 
 ### Get Standings
-Retrieve the rider standings.
+Retrieve the championship standings for a given season and category.
 
 `GET` `/results/standings?seasonUuid={seasonId}&categoryUuid={categoryId}`
 
@@ -508,7 +509,7 @@ The category ID.
       "points": 332.5
     },
     ...
-  ]
+  ],
   "xmlFile": "https://resources.motogp.com/files/results/2023/VAL/Moto2/RAC/worldstanding.XML"
 }
 ```
@@ -542,7 +543,7 @@ The category ID.
 }
 ```
 
-### Get Rider qualifying standings (BMW Award)
+### Get Rider Qualifying Standings (BMW Award)
 Retrieve the qualifying standings.
 
 `GET` `/results/standings/bmwaward?seasonUuid={seasonId}`
@@ -552,7 +553,7 @@ The season ID.
 
 #### Response
 ```json
-
+{
   "file": "https://resources.motogp.com/files/results/2023/VAL/MotoGP/BMW_Award.pdf",
   "classification": [
     {
@@ -598,7 +599,7 @@ The season ID.
 
 ## Broadcast API
 
-### Season categories
+### Season Categories
 Retrieve all categories for a single season
 
 `GET` `/categories?seasonYear={seasonYear}`
