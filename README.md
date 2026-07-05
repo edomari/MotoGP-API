@@ -1,4 +1,51 @@
 # MotoGP API
+
+<!-- toc -->
+
+- [Introduction](#introduction)
+  * [API Calls](#api-calls)
+  * [Base Address](#base-address)
+  * [Requests](#requests)
+- [Results API](#results-api)
+  * [Live Timing](#live-timing)
+  * [Get Seasons](#get-seasons)
+  * [Get Events](#get-events)
+  * [Get Season’s Categories](#get-seasons-categories)
+  * [Get Event’s Categories](#get-events-categories)
+  * [Get Sessions](#get-sessions)
+  * [Get Session](#get-session)
+  * [Get Classification](#get-classification)
+  * [Get Entry List](#get-entry-list)
+  * [Get Grid Positions](#get-grid-positions)
+  * [Get Standings](#get-standings)
+  * [Get Standings Files](#get-standings-files)
+  * [Get Rider Qualifying Standings (BMW Award)](#get-rider-qualifying-standings-bmw-award)
+- [Broadcast API](#broadcast-api)
+  * [Season Categories](#season-categories)
+  * [Get Events](#get-events-1)
+  * [Get Event](#get-event)
+  * [Get Riders](#get-riders)
+  * [Get Rider](#get-rider)
+  * [Get Rider Statistics](#get-rider-statistics)
+  * [Get Rider Statistics by season](#get-rider-statistics-by-season)
+  * [Get Teams](#get-teams)
+  * [Get Most wins per track](#get-most-wins-per-track)
+  * [Get All-time track poles](#get-all-time-track-poles)
+  * [Get All-time track records](#get-all-time-track-records)
+  * [Get Rider Main Photo](#get-rider-main-photo)
+  * [Get Last Live Session](#get-last-live-session)
+  * [Get Last Live Session of a Specific Category](#get-last-live-session-of-a-specific-category)
+  * [Get Session Classification](#get-session-classification)
+  * [Get Photos for Every Rider](#get-photos-for-every-rider)
+  * [Compare Two Riders](#compare-two-riders)
+  * [Get BMW Award Results](#get-bmw-award-results)
+  * [Get Last 3 Races Info for Every Rider Based on Standings](#get-last-3-races-info-for-every-rider-based-on-standings)
+  * [Get every broadcaster based on your country](#get-every-broadcaster-based-on-your-country)
+  * [Get Event Entry List](#get-event-entry-list)
+- [Endpoints to investigate further](#endpoints-to-investigate-further)
+
+<!-- tocstop -->
+
 ## Introduction
 
 The MotoGP API can be broadly divided into two sections:
@@ -24,7 +71,7 @@ Retrieve a timing feed during live sessions.
 
 🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/motogp/v1/timing-gateway/livetiming-lite)
 
-#### Response
+**Response**
 ```json
 {
   "head": {
@@ -87,7 +134,7 @@ Retrieve a list of MotoGP seasons.
 
 `GET` `/results/seasons`
 
-#### Response
+**Response**
 ```json
 [
   {
@@ -117,7 +164,7 @@ The season UUID.
 `isFinished` boolean\
 Retrieve only past events when `true`. Valid values are `true`, `false`.
 
-#### Response
+**Response**
 ```json
 [
   {
@@ -140,7 +187,7 @@ Retrieve only past events when `true`. Valid values are `true`, `false`.
 ]
 ```
 
-#### Note
+**Note**
 The value of `toad_api_uuid` is a reference to the same event in the Broadcast API.
 
 ### Get Season’s Categories
@@ -151,7 +198,7 @@ Retrieves a list of categories for a given season.
 `id` string **required**\
 The season ID.
 
-#### Response
+**Response**
 ```json
 [
   {
@@ -185,7 +232,7 @@ Retrieves a list of categories for a given event.
 `id` string **required**\
 The event ID.
 
-#### Response
+**Response**
 ```json
 [
   {
@@ -222,7 +269,7 @@ The event ID.
 `categoryId` string **required**\
 The category ID.
 
-#### Response
+**Response**
 ```json
 [
   {
@@ -263,7 +310,7 @@ Retrieve a single session
 `id` string **required**\
 The session ID.
 
-#### Response
+**Response**
 ```json
 {
   "date": "2023-03-24T10:45:00+00:00",
@@ -307,7 +354,7 @@ The season year. Valid values are `2023`, `2024`, etc. Passing this value seems 
 `isTest` boolean\
 Whether the current session is for an official test (as opposed to a normal race weekend). Valid values are `true`, `false`.
 
-#### Response
+**Response**
 ```json
 {
   "classification": [
@@ -371,7 +418,7 @@ The event ID.
 `categoryId` string **required**\
 The category ID.
 
-#### Response
+**Response**
 ```json
 {
   "entry": [
@@ -429,7 +476,7 @@ The event ID.
 `categoryId` string **required**\
 The category ID.
 
-#### Response
+**Response**
 ```json
 [
   {
@@ -470,7 +517,7 @@ The season ID.
 `categoryId` string **required**\
 The category ID.
 
-#### Response
+**Response**
 ```json
 {
   "file": "https://resources.motogp.com/files/results/2023/VAL/Moto2/RAC/worldstanding.pdf",
@@ -525,7 +572,7 @@ The season ID.
 `categoryId` string **required**\
 The category ID.
 
-#### Response
+**Response**
 ```json
 {
   "riders_results": {
@@ -551,7 +598,7 @@ Retrieve the qualifying standings.
 `seasonId` string **required**\
 The season ID.
 
-#### Response
+**Response**
 ```json
 {
   "file": "https://resources.motogp.com/files/results/2023/VAL/MotoGP/BMW_Award.pdf",
@@ -607,7 +654,7 @@ Retrieve all categories for a single season
 `seasonYear` integer **required**\
 The season year. Valid values are `2023`, `2024`, etc.
 
-#### Response
+**Response**
 ```json
 [
   {
@@ -641,7 +688,7 @@ Retrieves the broadcast events.
 `seasonYear` integer **required**\
 The season year. Valid values are `2023`, `2024`, etc.
 
-#### Response
+**Response**
 ```json
 [
   {
@@ -797,7 +844,7 @@ Retrieve a single broadcast event
 `id` string **required**\
 The broadcast event ID.
 
-#### Response
+**Response**
 ```json
 {
   "event_categories": [
@@ -946,7 +993,7 @@ Retrieve all riders across all categories in the current season.
 
 `GET` `/riders`
 
-#### Response
+**Response**
 ```json
 [
   {
@@ -1021,7 +1068,7 @@ Retrieve a single rider.
 `id` string **required**\
 The rider ID.
 
-#### Response
+**Response**
 ```json
 {
   "country": {
@@ -1108,7 +1155,7 @@ Retrieve rider statistics.
 `legacyId` integer **required**\
 The Rider legacy ID.
 
-#### Response
+**Response**
 ```json
 {
   "first_grand_prix": [
@@ -1397,7 +1444,7 @@ Retrieve rider statistics, summarised by season.
 `legacyId` integer **required**\
 The Rider legacy ID.
 
-#### Response
+**Response**
 ```json
 [
   {
@@ -1441,14 +1488,14 @@ The broadcast category ID.
 `seasonYear` integer **required**\
 The season year. Valid values are `2023`, `2024`, etc.
 
-#### Example
+**Example**
 
 [Link to endpoint](https://api.motogp.pulselive.com/motogp/v1/teams?categoryUuid=737ab122-76e1-4081-bedb-334caaa18c70&seasonYear=2025)
 
-#### Note
+**Note**
 This is the only known way to get all riders from all seasons, as the `/riders` endpoint only has the riders from the current season.
 
-#### Response
+**Response**
 ```json
 [
   {
@@ -1499,16 +1546,17 @@ This is the only known way to get all riders from all seasons, as the `/riders` 
 ```
 
 ### Get Most wins per track
+Retrieve the riders with the most wins at a specific circuit for a given category.
 
-`GET` `/results/riders-placement?circuitUuid={circuitId}&categoryName={categoryName}`
+`GET /results/riders-placement?circuitUuid={circuitId}&categoryName={categoryName}`
 
-`categoryId` string **required**\
-The broadcast category ID.
+`circuitId` `string` **required**\
+The circuit UUID.
 
-`seasonYear` string **required**\
+`categoryName` `string` **required**\
 The category name: MotoGP, Moto2, Moto3, 50cc, 125cc, 250cc, 500cc.
 
-#### Response
+**Response**
 ```json
 {
   "data": [
@@ -1548,16 +1596,17 @@ The category name: MotoGP, Moto2, Moto3, 50cc, 125cc, 250cc, 500cc.
 ```
 
 ### Get All-time track poles
+Retrieve the riders with the most pole positions at a specific circuit for a given category.
 
-`GET` `/results/riders-poles?circuitUuid={circuitId}&categoryName={categoryName}`
+`GET /results/riders-poles?circuitUuid={circuitId}&categoryName={categoryName}`
 
-`categoryId` string **required**\
-The broadcast category ID.
+`circuitId` `string` **required**\
+The circuit UUID.
 
-`seasonYear` string **required**\
+`categoryName` `string` **required**\
 The category name: MotoGP, Moto2, Moto3, 50cc, 125cc, 250cc, 500cc.
 
-#### Response
+**Response**
 
 ```json
 {
@@ -1596,13 +1645,14 @@ The category name: MotoGP, Moto2, Moto3, 50cc, 125cc, 250cc, 500cc.
 ```
 
 ### Get All-time track records
+Retrieve the all-time track records for a specific circuit across all available categories.
 
-`GET` `/results/circuit/{circuitId}/records`
+`GET /results/circuit/{circuitId}/records`
 
-`circuitId` string **required**\
+`circuitId` `string` **required**\
 The circuit ID.
 
-#### Response
+**Response**
 
 ```json
 {
@@ -1668,14 +1718,15 @@ The circuit ID.
 }
 ```
 
-### Get rider photo
+### Get Rider Main Photo
+Retrieve the main profile photo and associated image metadata for a specific rider.
 
-`GET` `/content/motogp/PHOTO/it?referenceExpression=("MOTOGP_RIDER:{riderId}")&tagNames=sport-data-image:rider:main&detail=DETAILED`
+`GET /content/motogp/PHOTO/it?referenceExpression=("MOTOGP_RIDER:{riderId}")&tagNames=sport-data-image:rider:main&detail=DETAILED`
 
-`riderId` string **required**\
-The riderId.
+`riderId` `string` **required**\
+The rider UUID used to fetch the image (e.g., `23e50438-a657-4fb0-a190-3262b5472f29`).
 
-#### Response
+**Response**
 
 ```json
 {
@@ -1746,26 +1797,261 @@ The riderId.
 }
 ```
 
-### Last live session
-GET `/motogp/v1/sessions/last?event-type=sport&broadcast-type=session`
+### Get Last Live Session
+Retrieve information about the most recent or currently active session based on event and broadcast types.
 
-### Last live session of a specific category
-GET `/motogp/v1/sessions/last?event-type=sport&broadcast-type=session&category=3`
+`GET /motogp/v1/sessions/last?event-type={eventType}&broadcast-type={broadcastType}`
 
-### Get session classification
-`GET /motogp/v2/results/classifications?session={sessionId}&test=false`
+`eventType` `string` **required**\
+The type of the event (e.g., `sport`).
 
-### Get photos for every rider
-`GET /motogp/v1/content/riders/photos?tag=sport-data-image%3Arider%3Amain`
+`broadcastType` `string` **required**\
+The broadcast type of the session (e.g., `session`).
 
-`GET /motogp/v1/content/riders/photos?tag=sport-data-image%3Arider%3Amain&motogp_category=737ab122-76e1-4081-bedb-334caaa18c70`
+**Response**
 
-`GET /content/motogp/playlist/it/1070006?detail=DETAILED`
+🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/motogp/v1/sessions/last?event-type=sport&broadcast-type=session)
 
-### Comparison between 2 riders
-`GET /motogp/v1/sportsdata-gateway/riders/pulse/statistics/comparison?season=2026&rider_id1={rider_id1}&rider_id2={rider_id2}`
+### Get Last Live Session of a Specific Category
+Retrieve information about the most recent or currently active session for a specific category based on event and broadcast types.
 
-#### Response
+`GET /motogp/v1/sessions/last?event-type={eventType}&broadcast-type={broadcastType}&category={categoryId}`
+
+`eventType` `string` **required**\
+The type of the event (e.g., `sport`).
+
+`broadcastType` `string` **required**\
+The broadcast type of the session (e.g., `session`).
+
+`categoryId` `string` **required**\
+The category ID (e.g., `3`).
+
+**Response**
+
+🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/motogp/v1/sessions/last?event-type=sport&broadcast-type=session&category=3)
+
+### Get Session Classification
+Retrieve the final classification, session details, and lap records for a specific session.
+
+`GET /motogp/v2/results/classifications?session={sessionId}&test={test}`
+
+`sessionId` `string` **required**\
+The session UUID.
+
+`test` `boolean` **required**\
+Indicates whether the session is a test session (e.g., `false`).
+
+**Response**
+```json
+{
+  "classification": [
+    {
+      "id": "372fcfe7-a9e9-4ebc-817e-67ce7300204e",
+      "position": 1,
+      "rider": {
+        "id": "e7e4c72e-952e-4f64-8e8a-a47ff590fade",
+        "full_name": "Alex Marquez",
+        "country": {
+          "iso": "ES",
+          "name": "Spain",
+          "region_iso": ""
+        },
+        "legacy_id": 8173,
+        "riders_id": "41195f0f-9817-4a4d-913e-c1fbbb351d9b",
+        "number": 73,
+        "riders_api_uuid": "41195f0f-9817-4a4d-913e-c1fbbb351d9b"
+      },
+      "constructor": {
+        "id": "b9d93efb-3cd0-4681-9de4-c412a866d568",
+        "name": "Ducati",
+        "legacy_id": 110
+      },
+      "team_name": "Gresini Racing MotoGP",
+      "best_lap": {
+        "number": 12,
+        "time": "01:38.782"
+      },
+      "total_laps": 15,
+      "top_speed": 339.6,
+      "gap": {
+        "first": "0.000",
+        "prev": "0.000"
+      },
+      "status": "INSTND"
+    },
+    ...
+  ],
+  "official": true,
+  "files": {
+    "classification": "[https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/Classification.pdf](https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/Classification.pdf)",
+    "analysis": "[https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/Analysis.pdf](https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/Analysis.pdf)",
+    "average_speed": "[https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/AverageSpeed.pdf](https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/AverageSpeed.pdf)",
+    "fast_lap_sequence": "[https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/FastLapSequence.pdf](https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/FastLapSequence.pdf)",
+    "session": "[https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/Session.pdf](https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/Session.pdf)",
+    "best_partial_time": "[https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/BestPartialTime.pdf](https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/BestPartialTime.pdf)",
+    "maximum_speed": "[https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/MaximumSpeed.pdf](https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/MaximumSpeed.pdf)"
+  },
+  "session": {
+    "id": "cb7655d9-387b-4247-9bbe-a067bbe484ff",
+    "type": "P",
+    "number": 1,
+    "date": "2023-03-24T10:45:00+00:00",
+    "status": "FINISHED"
+  },
+  "records": [
+    {
+      "type": "recordLap",
+      "rider": {
+        "id": "9cb55304-0ac1-401c-beb6-1a4f445018a4",
+        "full_name": "Francesco Bagnaia",
+        "country": {
+          "iso": "IT",
+          "name": "Italy",
+          "region_iso": ""
+        },
+        "legacy_id": 8273,
+        "riders_id": "66b78301-5826-4986-b11e-fa68a7bd77a7"
+      },
+      "bestLap": {
+        "number": null,
+        "time": "01:38.725"
+      },
+      "speed": "167.4",
+      "year": 2021,
+      "isNewRecord": false
+    },
+    {
+      "type": "bestLap",
+      "rider": {
+        "id": "fcdd5500-a769-4ff4-8b9e-080d1849ff42",
+        "full_name": "Fabio Quartararo",
+        "country": {
+          "iso": "FR",
+          "name": "France",
+          "region_iso": ""
+        },
+        "legacy_id": 8520,
+        "riders_id": "bf95d959-6a60-44f1-84b5-ded861e62578"
+      },
+      "bestLap": {
+        "number": null,
+        "time": "01:39.435"
+      },
+      "speed": "166.2",
+      "year": 2022,
+      "isNewRecord": false
+    },
+    {
+      "type": "fastestLap",
+      "rider": {
+        "id": "e7e4c72e-952e-4f64-8e8a-a47ff590fade",
+        "full_name": "Alex Marquez",
+        "country": {
+          "iso": "ES",
+          "name": "Spain",
+          "region_iso": ""
+        },
+        "legacy_id": 8173,
+        "riders_id": "41195f0f-9817-4a4d-913e-c1fbbb351d9b"
+      },
+      "bestLap": {
+        "number": 12,
+        "time": "01:38.782"
+      },
+      "speed": "167.3",
+      "year": null,
+      "isNewRecord": false
+    }
+  ]
+}
+```
+
+### Get Photos for Every Rider
+Retrieve the main profile photos and associated image metadata for all riders, with an option to filter by category.
+
+`GET /motogp/v1/content/riders/photos?tag={tag}&motogp_category={categoryId}`
+
+`tag` `string` **required**\
+The image tag used to fetch the photos (e.g., `sport-data-image:rider:main`). *Note: Ensure the colon `:` is URL-encoded as `%3A` in the request.*
+
+`categoryId` `string` **required**\
+The category UUID to filter the riders (e.g., `737ab122-76e1-4081-bedb-334caaa18c70`).
+
+**Response**
+```json
+{
+  "f5f54b1e-b2c3-4bfe-9f04-e5f722a7b9e4": {
+    "id": 425776,
+    "accountId": 2,
+    "type": "photo",
+    "title": "sport-data-image:rider:main | Stefan Bradl",
+    "description": null,
+    "date": "2023-06-18T22:09:00Z",
+    "location": null,
+    "coordinates": [0, 0],
+    "commentsOn": false,
+    "copyright": null,
+    "publishFrom": 1686845086439,
+    "publishTo": 0,
+    "tags": [
+      {
+        "id": 313,
+        "label": "sport-data-image:rider:main"
+      }
+    ],
+    "platform": "PULSE_CMS",
+    "language": "en",
+    "additionalInfo": {
+
+    },
+    "canonicalUrl": "",
+    "references": [
+      {
+        "label": null,
+        "id": -1,
+        "type": "MOTOGP_CATEGORY",
+        "sid": "737ab122-76e1-4081-bedb-334caaa18c70"
+      },
+      {
+        "label": null,
+        "id": -1,
+        "type": "MOTOGP_RIDER",
+        "sid": "f5f54b1e-b2c3-4bfe-9f04-e5f722a7b9e4"
+      }
+    ],
+    "related": [],
+    "metadata": null,
+    "titleTranslations": null,
+    "lastModified": 1687170777360,
+    "titleUrlSegment": "sport-data-imageridermain-stefan-bradl",
+    "subtitle": null,
+    "onDemandUrl": "[https://resources.motogp.pulselive.com/photo-resources/2023/06/15/95106a19-59c0-43d5-a701-d0a18b8bdd93/eF1hNGpO.png](https://resources.motogp.pulselive.com/photo-resources/2023/06/15/95106a19-59c0-43d5-a701-d0a18b8bdd93/eF1hNGpO.png)",
+    "originalDetails": {
+      "width": 1920,
+      "height": 2883,
+      "aspectRatio": 0.66597295
+    },
+    "imageUrl": "[https://resources.motogp.pulselive.com/motogp/photo/2023/06/15/3525a9d6-16e1-448b-8ce3-37926b7603dd/eF1hNGpO.png](https://resources.motogp.pulselive.com/motogp/photo/2023/06/15/3525a9d6-16e1-448b-8ce3-37926b7603dd/eF1hNGpO.png)"
+  },
+  ...
+}
+```
+
+### Compare Two Riders
+Retrieve a statistical comparison between two specific riders for a given season, including both career and season-specific statistics.
+
+`GET /motogp/v1/sportsdata-gateway/riders/pulse/statistics/comparison?season={season}&rider_id1={riderId1}&rider_id2={riderId2}`
+
+`season` `string` **required**\
+The season year (e.g., `2026`).
+
+`riderId1` `string` **required**\
+The UUID of the first rider.
+
+`riderId2` `string` **required**\
+The UUID of the second rider.
+
+**Response**
 ```json
 {
   "e622ec5b-5ccf-457c-a67f-ec028f0ddf6e": {
@@ -1877,10 +2163,15 @@ GET `/motogp/v1/sessions/last?event-type=sport&broadcast-type=session&category=3
 }
 ```
 
-### Get BMW Awards results
+### Get BMW Award Results
+Retrieve the BMW Award standings for a specific season.
+
 `GET /motogp/v2/results/bmw-award?season_year={year}`
 
-#### Response
+`year` `string` **required**\
+The season year (e.g., `2026`).
+
+**Response**
 ```json
 {
   "classification": [
@@ -1935,8 +2226,16 @@ GET `/motogp/v1/sessions/last?event-type=sport&broadcast-type=session&category=3
 }
 ```
 
-### Get last 3 races info for every rider based on standings
-`GET /motogp/v2/results/world-standings?type=rider&season={season_id}&category={category_id}`
+### Get Last 3 Races Info for Every Rider Based on Standings
+Retrieve the world standings for a specific season and category, including the results from the last 3 races and sprints for each rider.
+
+`GET /motogp/v2/results/world-standings?type=rider&season={seasonId}&category={categoryId}`
+
+`seasonId` `string` **required**\
+The season UUID.
+
+`categoryId` `string` **required**\
+The category UUID.
 
 ```json
 {
@@ -2045,11 +2344,18 @@ GET `/motogp/v1/sessions/last?event-type=sport&broadcast-type=session&category=3
 }
 ```
 
-### Get event entry list
+### Get Event Entry List
+Retrieve the entry list of riders and teams for a specific event and category.
 
-`GET /motogp/v2/results/entries?categoryId={category_Id}&eventId={event_id}`
+`GET /motogp/v2/results/entries?categoryId={categoryId}&eventId={eventId}`
 
-#### Response
+`categoryId` `string` **required**\
+The category UUID.
+
+`eventId` `string` **required**\
+The event UUID.
+
+**Response**
 ```json
 {
   "entry": [
@@ -2086,3 +2392,6 @@ GET `/motogp/v1/sessions/last?event-type=sport&broadcast-type=session&category=3
   "file": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Entry.pdf"
 }
 ```
+
+## Endpoints to investigate further
+- `/content/motogp/playlist/it/1070006?detail=DETAILED`
