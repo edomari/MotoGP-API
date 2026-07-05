@@ -1497,3 +1497,592 @@ This is the only known way to get all riders from all seasons, as the `/riders` 
   ...
 ]
 ```
+
+### Get Most wins per track
+
+`GET` `/results/riders-placement?circuitUuid={circuitId}&categoryName={categoryName}`
+
+`categoryId` string **required**\
+The broadcast category ID.
+
+`seasonYear` string **required**\
+The category name: MotoGP, Moto2, Moto3, 50cc, 125cc, 250cc, 500cc.
+
+#### Response
+```json
+{
+  "data": [
+    {
+      "times": 9,
+      "position": 1,
+      "rider": {
+        "id": "f55b433d-38b8-4d1d-bb3a-a709c82a0260",
+        "riders_id": "23e50438-a657-4fb0-a190-3262b5472f29",
+        "legacy_id": 7444,
+        "name": "Marc Marquez",
+        "country_iso": "ES",
+        "riders_api_uuid": "23e50438-a657-4fb0-a190-3262b5472f29"
+      }
+    },
+    {
+      "times": 6,
+      "position": 1,
+      "rider": {
+        "id": "ea0101ee-6b38-4d39-a466-fa83d2e1b36f",
+        "riders_id": "a31b9149-6b76-4adb-a677-8bbe0e9383ab",
+        "legacy_id": 1068,
+        "name": "Giacomo Agostini",
+        "country_iso": "IT",
+        "riders_api_uuid": "a31b9149-6b76-4adb-a677-8bbe0e9383ab"
+      }
+    },
+    ...
+  ],
+  "pagination": {
+    "Pagination-Limit": 20,
+    "Pagination-Page": 1,
+    "Pagination-Total": 1,
+    "Pagination-Total-Results": 16
+  }
+}
+```
+
+### Get All-time track poles
+
+`GET` `/results/riders-poles?circuitUuid={circuitId}&categoryName={categoryName}`
+
+`categoryId` string **required**\
+The broadcast category ID.
+
+`seasonYear` string **required**\
+The category name: MotoGP, Moto2, Moto3, 50cc, 125cc, 250cc, 500cc.
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "times": 8,
+      "rider": {
+        "id": "f55b433d-38b8-4d1d-bb3a-a709c82a0260",
+        "riders_id": "23e50438-a657-4fb0-a190-3262b5472f29",
+        "legacy_id": 7444,
+        "name": "Marc Marquez",
+        "country_iso": "ES",
+        "riders_api_uuid": "23e50438-a657-4fb0-a190-3262b5472f29"
+      }
+    },
+    {
+      "times": 4,
+      "rider": {
+        "id": "1eeb4eae-8878-448d-aab7-72d46cee5d59",
+        "riders_id": "b8a2f851-270e-4e62-aae0-35b99146a859",
+        "legacy_id": 31,
+        "name": "Max Biaggi",
+        "country_iso": "IT",
+        "riders_api_uuid": "b8a2f851-270e-4e62-aae0-35b99146a859"
+      }
+    },
+    ...
+  ],
+  "pagination": {
+    "Pagination-Limit": 20,
+    "Pagination-Page": 1,
+    "Pagination-Total": 1,
+    "Pagination-Total-Results": 12
+  }
+}
+```
+
+### Get All-time track records
+
+`GET` `/results/circuit/{circuitId}/records`
+
+`circuitId` string **required**\
+The circuit ID.
+
+#### Response
+
+```json
+{
+  "circuit": {
+    "id": "551f87c7-1940-48b0-bce7-1ad8de7ce548",
+    "name": "Sachsenring",
+    "legacy_id": 51,
+    "place": "Sachsenring",
+    "nation": "GER"
+  },
+  "records": {
+    "MotoGP™": {
+      "circuitRecord": {
+        "rider": {
+          "id": "5cbd7eb6-ccfc-4b9f-aad1-ede25d394f7b",
+          "full_name": "Jorge Martin",
+          "country": {
+            "iso": "ES",
+            "name": "Spain",
+            "region_iso": ""
+          },
+          "legacy_id": 8146,
+          "riders_id": "5b9af34e-da94-4ca2-9c4c-6be0fc8b1bbc",
+          "riders_api_uuid": "5b9af34e-da94-4ca2-9c4c-6be0fc8b1bbc"
+        },
+        "year": "2024",
+        "speed": "163.8",
+        "time": "01:20.667",
+        "category": {
+          "id": "e8c110ad-64aa-4e8e-8a86-f2f152f6a942",
+          "legacy_id": 3,
+          "name": "MotoGP™"
+        },
+        "constructor": {
+          "id": "b9d93efb-3cd0-4681-9de4-c412a866d568",
+          "name": "Ducati",
+          "legacy_id": 110
+        }
+      },
+      "bestPole": {
+        ...
+      },
+      "topSpeed": {
+        ...
+      },
+      "fastestLap": {
+        ...
+      },
+      "mostWins": [
+        ...
+      ],
+      "mostPoles": [
+        ...
+      ]
+    },
+    "Moto2™": {
+      ...
+    },
+    "Moto3™": {
+      ...
+    }
+  }
+}
+```
+
+### Get rider photo
+
+`GET` `/content/motogp/PHOTO/it?referenceExpression=("MOTOGP_RIDER:{riderId}")&tagNames=sport-data-image:rider:main&detail=DETAILED`
+
+`riderId` string **required**\
+The riderId.
+
+#### Response
+
+```json
+{
+  "pageInfo": {
+    "page": 0,
+    "numPages": 1,
+    "pageSize": 10,
+    "numEntries": 1
+  },
+  "content": [
+    {
+      "id": 872671,
+      "accountId": 2,
+      "type": "photo",
+      "title": "sport-data-image:rider:main | Marc Marquez",
+      "description": null,
+      "date": "2026-02-05T11:15:00Z",
+      "location": null,
+      "coordinates": [0, 0],
+      "commentsOn": false,
+      "copyright": null,
+      "publishFrom": 1770290130884,
+      "publishTo": 0,
+      "tags": [
+        {
+          "id": 313,
+          "label": "sport-data-image:rider:main"
+        }
+      ],
+      "platform": "PULSE_CMS",
+      "language": "it",
+      "additionalInfo": {
+
+      },
+      "canonicalUrl": "",
+      "references": [
+        {
+          "label": null,
+          "id": -1,
+          "type": "MOTOGP_CATEGORY",
+          "sid": "737ab122-76e1-4081-bedb-334caaa18c70"
+        },
+        {
+          "label": null,
+          "id": -1,
+          "type": "MOTOGP_RIDER",
+          "sid": "23e50438-a657-4fb0-a190-3262b5472f29"
+        }
+      ],
+      "related": [],
+      "metadata": {
+
+      },
+      "titleTranslations": null,
+      "lastModified": 1770290207827,
+      "titleUrlSegment": "sport-data-imageridermain-marc-marquez",
+      "visibilityOrder": [],
+      "subtitle": null,
+      "onDemandUrl": "https://resources.motogp.pulselive.com/photo-resources/2026/02/05/4e4bdf86-30e5-404e-9997-d2268e518442/QMIewuAG.png",
+      "originalDetails": {
+        "width": 1920,
+        "height": 2883,
+        "aspectRatio": 0.66597295
+      },
+      "imageUrl": "https://resources.motogp.pulselive.com/motogp/photo/2026/02/05/5893c8e7-882c-499e-8b09-f08216a27783/QMIewuAG.png"
+    }
+  ]
+}
+```
+
+### Last live session
+GET `/motogp/v1/sessions/last?event-type=sport&broadcast-type=session`
+
+### Last live session of a specific category
+GET `/motogp/v1/sessions/last?event-type=sport&broadcast-type=session&category=3`
+
+### Get session classification
+`GET /motogp/v2/results/classifications?session={sessionId}&test=false`
+
+### Get photos for every rider
+`GET /motogp/v1/content/riders/photos?tag=sport-data-image%3Arider%3Amain`
+
+`GET /motogp/v1/content/riders/photos?tag=sport-data-image%3Arider%3Amain&motogp_category=737ab122-76e1-4081-bedb-334caaa18c70`
+
+`GET /content/motogp/playlist/it/1070006?detail=DETAILED`
+
+### Comparison between 2 riders
+`GET /motogp/v1/sportsdata-gateway/riders/pulse/statistics/comparison?season=2026&rider_id1={rider_id1}&rider_id2={rider_id2}`
+
+#### Response
+```json
+{
+  "e622ec5b-5ccf-457c-a67f-ec028f0ddf6e": {
+    "profile": {
+      "name": "Marco",
+      "surname": "Bezzecchi",
+      "country": {
+        "iso": "IT",
+        "name": "Italy",
+        "flag": "https://photos.motogp.com/countries/flags/iso2/IT.svg"
+      },
+      "birth_city": "Rimini",
+      "birth_date": "1998-11-12",
+      "years_old": 27
+    },
+    "career_stats": {
+      "world_championship_wins": 0,
+      "seasons": 12,
+      "victories": 16,
+      "podiums": 48,
+      "races": 183,
+      "poles": 15,
+      "sprint_victories": 4,
+      "sprint_podiums": 14
+    },
+    "career_MotoGP™": {
+      "world_championship_wins": 0,
+      "seasons": 5,
+      "victories": 10,
+      "podiums": 24,
+      "races": 91,
+      "poles": 11,
+      "sprint_victories": 4,
+      "sprint_podiums": 14
+    },
+    "season": {
+      "team_name": "Aprilia Racing",
+      "points": 186,
+      "victories": 4,
+      "second_places": 2,
+      "third_places": 0,
+      "sprint_victories": null,
+      "sprint_second_places": null,
+      "sprint_third_places": 2,
+      "fastest_laps": 2,
+      "poles": 2,
+      "laps_first_position": 105,
+      "race_distance": 772.727,
+      "practices_distance": 2385.396,
+      "event_laps_first_position": 0,
+      "event_race_distance": 4.542,
+      "event_practices_distance": 349.734,
+      "bike_name": "Aprilia"
+    }
+  },
+  "5b9af34e-da94-4ca2-9c4c-6be0fc8b1bbc": {
+    "profile": {
+      "name": "Jorge",
+      "surname": "Martin",
+      "country": {
+        "iso": "ES",
+        "name": "Spain",
+        "flag": "https://photos.motogp.com/countries/flags/iso2/ES.svg"
+      },
+      "birth_city": "Madrid",
+      "birth_date": "1998-01-29",
+      "years_old": 28
+    },
+    "career_stats": {
+      "world_championship_wins": 2,
+      "seasons": 12,
+      "victories": 19,
+      "podiums": 65,
+      "races": 190,
+      "poles": 42,
+      "sprint_victories": 18,
+      "sprint_podiums": 34
+    },
+    "career_MotoGP™": {
+      "world_championship_wins": 1,
+      "seasons": 6,
+      "victories": 9,
+      "podiums": 37,
+      "races": 91,
+      "poles": 21,
+      "sprint_victories": 18,
+      "sprint_podiums": 34
+    },
+    "season": {
+      "team_name": "Aprilia Racing",
+      "points": 193,
+      "victories": 1,
+      "second_places": 3,
+      "third_places": 1,
+      "sprint_victories": 2,
+      "sprint_second_places": 1,
+      "sprint_third_places": 1,
+      "fastest_laps": 0,
+      "poles": 1,
+      "laps_first_position": 35,
+      "race_distance": 999.74,
+      "practices_distance": 2429.714,
+      "event_laps_first_position": 18,
+      "event_race_distance": 118.092,
+      "event_practices_distance": 327.024,
+      "bike_name": "Aprilia"
+    }
+  }
+}
+```
+
+### Get BMW Awards results
+`GET /motogp/v2/results/bmw-award?season_year={year}`
+
+#### Response
+```json
+{
+  "classification": [
+    {
+      "id": "83a79bac-1b34-4d0a-b947-6d1d2007015e",
+      "position": 1,
+      "rider": {
+        "id": "ab06dbae-7d6e-47c3-b63f-b7ac6b7d3bcd",
+        "full_name": "Marco Bezzecchi",
+        "country": {
+          "iso": "IT",
+          "name": "Italy",
+          "region_iso": ""
+        },
+        "legacy_id": 8688,
+        "riders_id": "e622ec5b-5ccf-457c-a67f-ec028f0ddf6e",
+        "number": 72,
+        "riders_api_uuid": "e622ec5b-5ccf-457c-a67f-ec028f0ddf6e"
+      },
+      "constructor": {
+        "id": "10d5e2bc-4b0b-4875-b936-3962fbb1b877",
+        "name": "Aprilia",
+        "legacy_id": 7
+      },
+      "team_name": "Aprilia Racing",
+      "countryShortName": "ITA",
+      "points": 162,
+      "event": {
+        "id": "83804cb1-a417-4213-b727-37f84b26d36e",
+        "name": "GRAND PRIX OF THE NETHERLANDS",
+        "sponsored_name": "TISSOT GRAND PRIX OF THE NETHERLANDS ",
+        "short_name": "NED",
+        "test": false,
+        "season": "2026",
+        "circuit": {
+          "id": "f4f9b0e8-1319-4d4f-a5ae-6cf193b01fca",
+          "name": "TT Circuit Assen",
+          "legacy_id": 7,
+          "place": "Assen",
+          "nation": "NED"
+        },
+        "country": {
+          "iso": "NL",
+          "name": "Netherlands",
+          "region_iso": ""
+        }
+      }
+    },
+    ...
+  ],
+  "file": "https://resources.motogp.com/files/results/2026/NED/MotoGP/BMW_Award.pdf"
+}
+```
+
+### Get last 3 races info for every rider based on standings
+`GET /motogp/v2/results/world-standings?type=rider&season={season_id}&category={category_id}`
+
+```json
+{
+  "classification": {
+    "rider": [
+      {
+        "id": "976555f6-40e4-4fdf-932c-2133d8a90c96",
+        "position": 1,
+        "rider": {
+          "id": "5cbd7eb6-ccfc-4b9f-aad1-ede25d394f7b",
+          "full_name": "Jorge Martin",
+          "country": {
+            "iso": "ES",
+            "name": "Spain",
+            "region_iso": ""
+          },
+          "legacy_id": 8146,
+          "riders_id": "5b9af34e-da94-4ca2-9c4c-6be0fc8b1bbc",
+          "number": 89,
+          "riders_api_uuid": "5b9af34e-da94-4ca2-9c4c-6be0fc8b1bbc"
+        },
+        "constructor": {
+          "id": "10d5e2bc-4b0b-4875-b936-3962fbb1b877",
+          "name": "Aprilia",
+          "legacy_id": 7
+        },
+        "team_name": "Aprilia Racing",
+        "session": "RAC",
+        "points": 193,
+        "pointsFromFirst": 0,
+        "pointsFromPrevious": 0,
+        "race_wins": 1,
+        "podiums": 5,
+        "last_positions": {
+          "NED": 3,
+          "CZE": 9,
+          "HUN": null
+        },
+        "sprint_wins": 2,
+        "sprint_podiums": 4,
+        "sprint_last_positions": {
+          "NED": 5,
+          "CZE": 5,
+          "HUN": 6
+        },
+        "position_change": 1
+      },
+      ...
+    ]
+  },
+  "files": {
+    "pdf": "https://resources.motogp.com/files/results/2026/NED/MotoGP/RAC/worldstanding.pdf",
+    "xml": "https://resources.motogp.com/files/results/2026/NED/MotoGP/RAC/worldstanding.XML"
+  },
+  "official": true
+}
+```
+
+### Get every broadcaster based on your country
+`GET /broadcasting/broadcasters`
+
+```json
+{
+  "pageInfo": {
+    "page": 0,
+    "numPages": 1,
+    "pageSize": 10,
+    "numEntries": 2
+  },
+  "content": [
+    {
+      "id": 72,
+      "name": "SKY",
+      "abbreviation": "SKY",
+      "logo": {
+        "reference": "491330",
+        "type": "PHOTO",
+        "info": {
+          "original": {
+            "width": 668,
+            "height": 409,
+            "aspectRatio": 1.63325183374083,
+            "url": "https://resources.motogp.pulselive.com/motogp/photo/2024/03/07/d8f8c4f4-b663-4b8d-8d3d-eacda8ea63a2/ITALIA-Sky.png"
+          },
+          "orientation": "NORMAL",
+          "areas": [
+            {
+              "area": "default",
+              "positionX": 67,
+              "positionY": 41,
+              "width": 534,
+              "height": 327,
+              "uuid": null
+            }
+          ]
+        }
+      },
+      "link": "http://tiny.cc/broadorna",
+      "restrictedCountries": [
+        "AT",
+        "IT"
+      ]
+    },
+    ...
+  ]
+}
+```
+
+### Get event entry list
+
+`GET /motogp/v2/results/entries?categoryId={category_Id}&eventId={event_id}`
+
+#### Response
+```json
+{
+  "entry": [
+    {
+      "id": "7a9e873f-de84-4f33-9c79-d304fa4eddfb",
+      "number": 1,
+      "rider": {
+        "id": "487440af-cfa9-478a-903b-4e893ee18d3a",
+        "full_name": "Johann Zarco",
+        "country": {
+          "iso": "FR",
+          "name": "France",
+          "region_iso": ""
+        },
+        "legacy_id": 7236,
+        "riders_id": "4a439bde-305a-4995-b3e7-783fa99f784a",
+        "number": 5,
+        "rider_api_uuid": "4a439bde-305a-4995-b3e7-783fa99f784a"
+      },
+      "team_name": "Castrol Honda LCR",
+      "constructor": {
+        "id": "3a036648-7b14-4257-8c62-245e47e4d42b",
+        "name": "Honda",
+        "legacy_id": 1
+      },
+      "wildcard": false,
+      "replacement": null,
+      "replaced": true,
+      "rookieOfTheYear": false,
+      "independentTeamRider": false
+    },
+    ...
+  ],
+  "file": "https://resources.motogp.com/files/results/2026/ITA/MotoGP/Entry.pdf"
+}
+```
