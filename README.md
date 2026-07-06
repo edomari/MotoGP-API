@@ -7,15 +7,15 @@
     - [API Calls](#api-calls)
     - [Base Address](#base-address)
     - [Requests](#requests)
-  - [Content API (`/content`)](#content-api-content)
+  - [:camera: Content API (`/content`)](#camera-content-api-content)
     - [Get Photos for Every Rider](#get-photos-for-every-rider)
     - [Get MotoGP Content](#get-motogp-content)
-  - [Broadcasting API (`/broadcasting`)](#broadcasting-api-broadcasting)
+  - [:tv: Broadcasting API (`/broadcasting`)](#tv-broadcasting-api-broadcasting)
     - [Get every broadcaster based on your country](#get-every-broadcaster-based-on-your-country)
-  - [Gateways API (`/motogp/v1/*-gateway`)](#gateways-api-motogpv1-gateway)
+  - [:stopwatch: Gateways API (`/motogp/v1/*-gateway`)](#stopwatch-gateways-api-motogpv1-gateway)
     - [Live Timing](#live-timing)
     - [Get Comparison between Two Riders](#get-comparison-between-two-riders)
-  - [Results API v1 (`/motogp/v1/results`)](#results-api-v1-motogpv1results)
+  - [:checkered\_flag: Results API v1 (`/motogp/v1/results`)](#checkered_flag-results-api-v1-motogpv1results)
     - [Get Seasons](#get-seasons)
     - [Get Events](#get-events)
     - [Get Season’s Categories](#get-seasons-categories)
@@ -31,12 +31,12 @@
     - [Get Most wins per track](#get-most-wins-per-track)
     - [Get All-time track poles](#get-all-time-track-poles)
     - [Get All-time track records](#get-all-time-track-records)
-  - [Results API v2 (`/motogp/v2/results`)](#results-api-v2-motogpv2results)
+  - [:checkered\_flag: Results API v2 (`/motogp/v2/results`)](#checkered_flag-results-api-v2-motogpv2results)
     - [Get Session Classification](#get-session-classification)
     - [Get BMW Award Results](#get-bmw-award-results)
     - [Get Last 3 Races Info for Every Rider Based on Standings](#get-last-3-races-info-for-every-rider-based-on-standings)
     - [Get Event Entry List](#get-event-entry-list)
-  - [Core API v1 (`/motogp/v1/`)](#core-api-v1-motogpv1)
+  - [:motorcycle: Core API v1 (`/motogp/v1/`)](#motorcycle-core-api-v1-motogpv1)
     - [Season Categories](#season-categories)
     - [Get Events](#get-events-1)
     - [Get Event](#get-event)
@@ -76,7 +76,7 @@ Depending on the specific resource being accessed, the endpoints are prefixed wi
 ### Requests
 Data resources are accessed via standard HTTP requests in UTF-8 format. The API is strictly read-only; therefore, the only HTTP verb in use is `GET`.
 
-## Content API (`/content`)
+## :camera: Content API (`/content`)
 
 ### Get Photos for Every Rider
 Retrieve the main profile photos and associated image metadata for all riders, with an option to filter by category.
@@ -84,7 +84,7 @@ Retrieve the main profile photos and associated image metadata for all riders, w
 `GET /motogp/v1/content/riders/photos?tag={tag}&motogp_category={categoryId}`
 
 `tag` `string` **required**\
-The image tag used to fetch the photos (e.g., `sport-data-image:rider:main`). *Note: Ensure the colon `:` is URL-encoded as `%3A` in the request.*
+The image tag used to fetch the photos (e.g., `sport-data-image:rider:main`).
 
 `categoryId` `string` **required**\
 The category UUID to filter the riders (e.g., `737ab122-76e1-4081-bedb-334caaa18c70`).
@@ -149,7 +149,6 @@ The category UUID to filter the riders (e.g., `737ab122-76e1-4081-bedb-334caaa18
 }
 ```
 
-
 ### Get MotoGP Content
 Retrieve various types of media (photos, videos, or promos) associated with specific entities like events, teams, riders, or seasons. The endpoint structure is centralized, changing only the content type in the path and the references/tags in the query.
 
@@ -173,7 +172,7 @@ Examples:
 *Note: Ensure colons `:` and commas `,` are URL-encoded as `%3A` and `%2C`.*
 
 `referenceExpression` `string` **optional**\
-An alternative to `references`, used in specific queries (e.g., `("MOTOGP_RIDER:{riderId}")`). *Note: Requires URL-encoding for special characters.*
+An alternative to `references`, used in specific queries (e.g., `("MOTOGP_RIDER:{riderId}")`).
 
 `tagNames` `string` **required**\
 The specific tag used to fetch the desired content.\
@@ -182,7 +181,6 @@ Examples:
 - `Full Race`
 - `sport-data-image:team:background`
 - `sport-data-image:rider:main`\
-*Note: Ensure spaces are URL-encoded as `%20` and colons as `%3A`.*
 
 `sort` `string` **optional**\
 The sorting order of the results (e.g., `descending`).
@@ -376,9 +374,12 @@ The level of detail to return in the JSON response (e.g., `DETAILED`).
 }
 ```
 
-## Broadcasting API (`/broadcasting`)
+## :tv: Broadcasting API (`/broadcasting`)
 
 ### Get every broadcaster based on your country
+
+Retrieve a list of official MotoGP broadcasters available in your region. The API automatically determines the appropriate country based on the requester's IP address.
+
 `GET /broadcasting/broadcasters`
 
 ```json
@@ -428,7 +429,7 @@ The level of detail to return in the JSON response (e.g., `DETAILED`).
 }
 ```
 
-## Gateways API (`/motogp/v1/*-gateway`)
+## :stopwatch: Gateways API (`/motogp/v1/*-gateway`)
 
 ### Live Timing
 Retrieve a timing feed during live sessions.
@@ -621,7 +622,7 @@ The UUID of the second rider.
 }
 ```
 
-## Results API v1 (`/motogp/v1/results`)
+## :checkered_flag: Results API v1 (`/motogp/v1/results`)
 
 ### Get Seasons
 Retrieve a list of MotoGP seasons.
@@ -1312,7 +1313,7 @@ The circuit ID.
 }
 ```
 
-## Results API v2 (`/motogp/v2/results`)
+## :checkered_flag: Results API v2 (`/motogp/v2/results`)
 
 ### Get Session Classification
 Retrieve the final classification, session details, and lap records for a specific session.
@@ -1630,7 +1631,7 @@ The event UUID.
 }
 ```
 
-## Core API v1 (`/motogp/v1/`)
+## :motorcycle: Core API v1 (`/motogp/v1/`)
 
 ### Season Categories
 Retrieve all categories for a single season
