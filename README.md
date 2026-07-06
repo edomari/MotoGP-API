@@ -2,50 +2,51 @@
 
 <!-- toc -->
 
-- [Introduction](#introduction)
-  * [API Calls](#api-calls)
-  * [Base Address](#base-address)
-  * [Requests](#requests)
-- [Content API (`/content`)](#content-api-content)
-  * [Get Photos for Every Rider](#get-photos-for-every-rider)
-  * [Get MotoGP Content](#get-motogp-content)
-- [Broadcasting API (`/broadcasting`)](#broadcasting-api-broadcasting)
-  * [Get every broadcaster based on your country](#get-every-broadcaster-based-on-your-country)
-- [Gateways API (`/motogp/v1/*-gateway`)](#gateways-api-motogpv1-gateway)
-  * [Live Timing](#live-timing)
-  * [Get Comparison between Two Riders](#get-comparison-between-two-riders)
-- [Results API v1 (`/motogp/v1/results`)](#results-api-v1-motogpv1results)
-  * [Get Seasons](#get-seasons)
-  * [Get Events](#get-events)
-  * [Get Season’s Categories](#get-seasons-categories)
-  * [Get Event’s Categories](#get-events-categories)
-  * [Get Sessions](#get-sessions)
-  * [Get Session](#get-session)
-  * [Get Classification](#get-classification)
-  * [Get Entry List](#get-entry-list)
-  * [Get Grid Positions](#get-grid-positions)
-  * [Get Standings](#get-standings)
-  * [Get Standings Files](#get-standings-files)
-  * [Get Rider Qualifying Standings (BMW Award)](#get-rider-qualifying-standings-bmw-award)
-  * [Get Most wins per track](#get-most-wins-per-track)
-  * [Get All-time track poles](#get-all-time-track-poles)
-  * [Get All-time track records](#get-all-time-track-records)
-- [Results API v2 (`/motogp/v2/results`)](#results-api-v2-motogpv2results)
-  * [Get Session Classification](#get-session-classification)
-  * [Get BMW Award Results](#get-bmw-award-results)
-  * [Get Last 3 Races Info for Every Rider Based on Standings](#get-last-3-races-info-for-every-rider-based-on-standings)
-  * [Get Event Entry List](#get-event-entry-list)
-- [Core API v1 (`/motogp/v1/`)](#core-api-v1-motogpv1)
-  * [Season Categories](#season-categories)
-  * [Get Events](#get-events-1)
-  * [Get Event](#get-event)
-  * [Get Riders](#get-riders)
-  * [Get Rider](#get-rider)
-  * [Get Rider Statistics](#get-rider-statistics)
-  * [Get Rider Statistics by season](#get-rider-statistics-by-season)
-  * [Get Teams](#get-teams)
-  * [Get Last Session](#get-last-session)
-- [Endpoints to investigate further](#endpoints-to-investigate-further)
+- [MotoGP API](#motogp-api)
+  - [Introduction](#introduction)
+    - [API Calls](#api-calls)
+    - [Base Address](#base-address)
+    - [Requests](#requests)
+  - [Content API (`/content`)](#content-api-content)
+    - [Get Photos for Every Rider](#get-photos-for-every-rider)
+    - [Get MotoGP Content](#get-motogp-content)
+  - [Broadcasting API (`/broadcasting`)](#broadcasting-api-broadcasting)
+    - [Get every broadcaster based on your country](#get-every-broadcaster-based-on-your-country)
+  - [Gateways API (`/motogp/v1/*-gateway`)](#gateways-api-motogpv1-gateway)
+    - [Live Timing](#live-timing)
+    - [Get Comparison between Two Riders](#get-comparison-between-two-riders)
+  - [Results API v1 (`/motogp/v1/results`)](#results-api-v1-motogpv1results)
+    - [Get Seasons](#get-seasons)
+    - [Get Events](#get-events)
+    - [Get Season’s Categories](#get-seasons-categories)
+    - [Get Event’s Categories](#get-events-categories)
+    - [Get Sessions](#get-sessions)
+    - [Get Session](#get-session)
+    - [Get Classification](#get-classification)
+    - [Get Entry List](#get-entry-list)
+    - [Get Grid Positions](#get-grid-positions)
+    - [Get Standings](#get-standings)
+    - [Get Standings Files](#get-standings-files)
+    - [Get Rider Qualifying Standings (BMW Award)](#get-rider-qualifying-standings-bmw-award)
+    - [Get Most wins per track](#get-most-wins-per-track)
+    - [Get All-time track poles](#get-all-time-track-poles)
+    - [Get All-time track records](#get-all-time-track-records)
+  - [Results API v2 (`/motogp/v2/results`)](#results-api-v2-motogpv2results)
+    - [Get Session Classification](#get-session-classification)
+    - [Get BMW Award Results](#get-bmw-award-results)
+    - [Get Last 3 Races Info for Every Rider Based on Standings](#get-last-3-races-info-for-every-rider-based-on-standings)
+    - [Get Event Entry List](#get-event-entry-list)
+  - [Core API v1 (`/motogp/v1/`)](#core-api-v1-motogpv1)
+    - [Season Categories](#season-categories)
+    - [Get Events](#get-events-1)
+    - [Get Event](#get-event)
+    - [Get Riders](#get-riders)
+    - [Get Rider](#get-rider)
+    - [Get Rider Statistics](#get-rider-statistics)
+    - [Get Rider Statistics by season](#get-rider-statistics-by-season)
+    - [Get Teams](#get-teams)
+    - [Get Last Session](#get-last-session)
+  - [Endpoints to investigate further](#endpoints-to-investigate-further)
 
 <!-- tocstop -->
 
@@ -136,13 +137,13 @@ The category UUID to filter the riders (e.g., `737ab122-76e1-4081-bedb-334caaa18
     "lastModified": 1687170777360,
     "titleUrlSegment": "sport-data-imageridermain-stefan-bradl",
     "subtitle": null,
-    "onDemandUrl": "[https://resources.motogp.pulselive.com/photo-resources/2023/06/15/95106a19-59c0-43d5-a701-d0a18b8bdd93/eF1hNGpO.png](https://resources.motogp.pulselive.com/photo-resources/2023/06/15/95106a19-59c0-43d5-a701-d0a18b8bdd93/eF1hNGpO.png)",
+    "onDemandUrl": "https://resources.motogp.pulselive.com/photo-resources/2023/06/15/95106a19-59c0-43d5-a701-d0a18b8bdd93/eF1hNGpO.png",
     "originalDetails": {
       "width": 1920,
       "height": 2883,
       "aspectRatio": 0.66597295
     },
-    "imageUrl": "[https://resources.motogp.pulselive.com/motogp/photo/2023/06/15/3525a9d6-16e1-448b-8ce3-37926b7603dd/eF1hNGpO.png](https://resources.motogp.pulselive.com/motogp/photo/2023/06/15/3525a9d6-16e1-448b-8ce3-37926b7603dd/eF1hNGpO.png)"
+    "imageUrl": "https://resources.motogp.pulselive.com/motogp/photo/2023/06/15/3525a9d6-16e1-448b-8ce3-37926b7603dd/eF1hNGpO.png"
   },
   ...
 }
@@ -257,7 +258,7 @@ The level of detail to return in the JSON response (e.g., `DETAILED`).
           "height": 1026,
           "aspectRatio": 0.954191
         },
-        "imageUrl": "[https://resources.motogp.pulselive.com/motogp/photo/2024/10/21/73b18b26-3453-40ab-9289-6850c479fc00/pt.png](https://resources.motogp.pulselive.com/motogp/photo/2024/10/21/73b18b26-3453-40ab-9289-6850c479fc00/pt.png)"
+        "imageUrl": "https://resources.motogp.pulselive.com/motogp/photo/2024/10/21/73b18b26-3453-40ab-9289-6850c479fc00/pt.png"
       }
     },
     {
@@ -303,7 +304,7 @@ The level of detail to return in the JSON response (e.g., `DETAILED`).
       "lastModified": 1772361352070,
       "titleUrlSegment": "motogp-il-gran-premio-pt-della-thailandia",
       "visibilityOrder": [],
-      "thumbnailUrl": "[https://resources.motogp.pulselive.com/photo-resources/2025/02/27/074d0b5b-a00b-4849-8661-b0803113b339/MGP-GP-THAI.jpg?width=1280](https://resources.motogp.pulselive.com/photo-resources/2025/02/27/074d0b5b-a00b-4849-8661-b0803113b339/MGP-GP-THAI.jpg?width=1280)",
+      "thumbnailUrl": "https://resources.motogp.pulselive.com/photo-resources/2025/02/27/074d0b5b-a00b-4849-8661-b0803113b339/MGP-GP-THAI.jpg?width=1280",
       "duration": 6492,
       "variants": [
         {
@@ -322,8 +323,8 @@ The level of detail to return in the JSON response (e.g., `DETAILED`).
       ],
       "mediaId": "0940933b-b5ba-411f-95d5-dbdf6667d628",
       "mediaGuid": "0940933b-b5ba-411f-95d5-dbdf6667d628",
-      "imageUrl": "[https://resources.motogp.pulselive.com/motogp/photo/2025/02/27/074d0b5b-a00b-4849-8661-b0803113b339/MGP-GP-THAI.jpg](https://resources.motogp.pulselive.com/motogp/photo/2025/02/27/074d0b5b-a00b-4849-8661-b0803113b339/MGP-GP-THAI.jpg)",
-      "onDemandUrl": "[https://resources.motogp.pulselive.com/photo-resources/2025/02/27/074d0b5b-a00b-4849-8661-b0803113b339/MGP-GP-THAI.jpg](https://resources.motogp.pulselive.com/photo-resources/2025/02/27/074d0b5b-a00b-4849-8661-b0803113b339/MGP-GP-THAI.jpg)"
+      "imageUrl": "https://resources.motogp.pulselive.com/motogp/photo/2025/02/27/074d0b5b-a00b-4849-8661-b0803113b339/MGP-GP-THAI.jpg",
+      "onDemandUrl": "https://resources.motogp.pulselive.com/photo-resources/2025/02/27/074d0b5b-a00b-4849-8661-b0803113b339/MGP-GP-THAI.jpg"
     },
     {
       "id": 872751,
@@ -363,13 +364,13 @@ The level of detail to return in the JSON response (e.g., `DETAILED`).
       "titleUrlSegment": "73-mgp-alex-marquez-bike-official-x01-lgz_4297",
       "visibilityOrder": [],
       "subtitle": null,
-      "onDemandUrl": "[https://resources.motogp.pulselive.com/photo-resources/2026/02/06/4904a18b-9e65-49ca-b315-73ebde777e36/73-MGP-Alex-Marquez-Bike-Official-x01-LGZ_4297.png](https://resources.motogp.pulselive.com/photo-resources/2026/02/06/4904a18b-9e65-49ca-b315-73ebde777e36/73-MGP-Alex-Marquez-Bike-Official-x01-LGZ_4297.png)",
+      "onDemandUrl": "https://resources.motogp.pulselive.com/photo-resources/2026/02/06/4904a18b-9e65-49ca-b315-73ebde777e36/73-MGP-Alex-Marquez-Bike-Official-x01-LGZ_4297.png",
       "originalDetails": {
         "width": 612,
         "height": 1024,
         "aspectRatio": 0.59765625
       },
-      "imageUrl": "[https://resources.motogp.pulselive.com/motogp/photo/2026/02/06/a95bff8d-a406-465c-b816-d6724cf04006/73-MGP-Alex-Marquez-Bike-Official-x01-LGZ_4297.png](https://resources.motogp.pulselive.com/motogp/photo/2026/02/06/a95bff8d-a406-465c-b816-d6724cf04006/73-MGP-Alex-Marquez-Bike-Official-x01-LGZ_4297.png)"
+      "imageUrl": "https://resources.motogp.pulselive.com/motogp/photo/2026/02/06/a95bff8d-a406-465c-b816-d6724cf04006/73-MGP-Alex-Marquez-Bike-Official-x01-LGZ_4297.png"
     }
   ]
 }
@@ -1366,13 +1367,13 @@ Indicates whether the session is a test session (e.g., `false`).
   ],
   "official": true,
   "files": {
-    "classification": "[https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/Classification.pdf](https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/Classification.pdf)",
-    "analysis": "[https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/Analysis.pdf](https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/Analysis.pdf)",
-    "average_speed": "[https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/AverageSpeed.pdf](https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/AverageSpeed.pdf)",
-    "fast_lap_sequence": "[https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/FastLapSequence.pdf](https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/FastLapSequence.pdf)",
-    "session": "[https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/Session.pdf](https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/Session.pdf)",
-    "best_partial_time": "[https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/BestPartialTime.pdf](https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/BestPartialTime.pdf)",
-    "maximum_speed": "[https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/MaximumSpeed.pdf](https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/MaximumSpeed.pdf)"
+    "classification": "https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/Classification.pdf",
+    "analysis": "https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/Analysis.pdf",
+    "average_speed": "https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/AverageSpeed.pdf",
+    "fast_lap_sequence": "https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/FastLapSequence.pdf",
+    "session": "https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/Session.pdf",
+    "best_partial_time": "https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/BestPartialTime.pdf",
+    "maximum_speed": "https://resources.motogp.com/files/results/2023/POR/MotoGP/P1/MaximumSpeed.pdf"
   },
   "session": {
     "id": "cb7655d9-387b-4247-9bbe-a067bbe484ff",
