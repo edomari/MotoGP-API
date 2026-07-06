@@ -157,13 +157,13 @@ Retrieve various types of media (photos, videos, or promos) associated with spec
 
 > **Note:** The endpoint path may occasionally include a trailing slash after the language parameter depending on the system call (e.g., `/photo/{language}/`).
 
-`contentType` `string` `required`\
+`contentType` `string` **required**\
 The type of media to retrieve. Accepted values: `PHOTO` (or `photo`), `VIDEO`, or `PROMO`.
 
-`language` `string` `required`\
+`language` `string` **required**\
 The language code for the content (e.g., `en`, `it`).
 
-`references` `string` `optional`\
+`references` `string` **optional**\
 A comma-separated list of reference entities to filter by. Usually formatted as `TYPE:UUID`.\
 Examples: 
 - `MOTOGP_EVENT:{eventId}`
@@ -172,10 +172,10 @@ Examples:
 - `MOTOGP_SEASON:2026,MOTOGP_EVENT:{eventId},MOTOGP_CATEGORY:{categoryId}`\
 *Note: Ensure colons `:` and commas `,` are URL-encoded as `%3A` and `%2C`.*
 
-`referenceExpression` `string` `optional`\
+`referenceExpression` `string` **optional**\
 An alternative to `references`, used in specific queries (e.g., `("MOTOGP_RIDER:{riderId}")`). *Note: Requires URL-encoding for special characters.*
 
-`tagNames` `string` `required`\
+`tagNames` `string` **required**\
 The specific tag used to fetch the desired content.\
 Examples:
 - `event-page:sponsor:logo`
@@ -184,16 +184,16 @@ Examples:
 - `sport-data-image:rider:main`\
 *Note: Ensure spaces are URL-encoded as `%20` and colons as `%3A`.*
 
-`sort` `string` `optional`\
+`sort` `string` **optional**\
 The sorting order of the results (e.g., `descending`).
 
-`offset` `integer` `optional`\
+`offset` `integer` **optional**\
 The pagination offset (e.g., `0`).
 
-`limit` `integer` `optional`\
+`limit` `integer` **optional**\
 The maximum number of results to return (e.g., `10`, `16`).
 
-`detail` `string` `optional`\
+`detail` `string` **optional**\
 The level of detail to return in the JSON response (e.g., `DETAILED`).
 
 **Response**
