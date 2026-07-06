@@ -90,6 +90,8 @@ The image tag used to fetch the photos (e.g., `sport-data-image:rider:main`).
 The category UUID to filter the riders (e.g., `737ab122-76e1-4081-bedb-334caaa18c70`).
 
 **Response**
+🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/motogp/v1/content/riders/photos?tag=sport-data-image:rider:main&motogp_category=737ab122-76e1-4081-bedb-334caaa18c70)
+
 ```json
 {
   "f5f54b1e-b2c3-4bfe-9f04-e5f722a7b9e4": {
@@ -152,7 +154,7 @@ The category UUID to filter the riders (e.g., `737ab122-76e1-4081-bedb-334caaa18
 ### Get MotoGP Content
 Retrieve various types of media (photos, videos, or promos) associated with specific entities like events, teams, riders, or seasons. The endpoint structure is centralized, changing only the content type in the path and the references/tags in the query.
 
-`GET /content/motogp/{contentType}/{language}?references={references}&referenceExpression={referenceExpression}&tagNames={tagNames}&sort={sort}&offset={offset}&limit={limit}&detail={detail}`
+`GET /content/motogp/{contentType}/{language}?references={references}&tagNames={tagNames}&sort={sort}&offset={offset}&limit={limit}&detail={detail}`
 
 > **Note:** The endpoint path may occasionally include a trailing slash after the language parameter depending on the system call (e.g., `/photo/{language}/`).
 
@@ -162,17 +164,15 @@ The type of media to retrieve. Accepted values: `PHOTO` (or `photo`), `VIDEO`, o
 `language` `string` **required**\
 The language code for the content (e.g., `en`, `it`).
 
-`references` `string` **optional**\
+`references` `string` **optional** or `referenceExpression` `string` **optional** \
 A comma-separated list of reference entities to filter by. Usually formatted as `TYPE:UUID`.\
 Examples: 
 - `MOTOGP_EVENT:{eventId}`
 - `MOTOGP_TEAM:{teamId}`
 - `MOTOGP_RIDER:{riderId}`
-- `MOTOGP_SEASON:2026,MOTOGP_EVENT:{eventId},MOTOGP_CATEGORY:{categoryId}`\
-*Note: Ensure colons `:` and commas `,` are URL-encoded as `%3A` and `%2C`.*
+- `MOTOGP_SEASON:2026,MOTOGP_EVENT:{eventId},MOTOGP_CATEGORY:{categoryId}`
 
-`referenceExpression` `string` **optional**\
-An alternative to `references`, used in specific queries (e.g., `("MOTOGP_RIDER:{riderId}")`).
+With `referencesExpression` the sintax is different: `("MOTOGP_RIDER:{riderId}")`.
 
 `tagNames` `string` **required**\
 The specific tag used to fetch the desired content.\
@@ -195,6 +195,7 @@ The maximum number of results to return (e.g., `10`, `16`).
 The level of detail to return in the JSON response (e.g., `DETAILED`).
 
 **Response**
+🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/content/motogp/PHOTO/it?references=MOTOGP_RIDER:23e50438-a657-4fb0-a190-3262b5472f29&tagNames=sport-data-image:rider:main&detail=DETAILED)
 ```json
 {
   "pageInfo": {
@@ -382,6 +383,9 @@ Retrieve a list of official MotoGP broadcasters available in your region. The AP
 
 `GET /broadcasting/broadcasters`
 
+**Response**
+🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/broadcasting/broadcasters)
+
 ```json
 {
   "pageInfo": {
@@ -434,7 +438,7 @@ Retrieve a list of official MotoGP broadcasters available in your region. The AP
 ### Live Timing
 Retrieve a timing feed during live sessions.
 
-`GET` `/timing-gateway/livetiming-lite`
+`GET /timing-gateway/livetiming-lite`
 
 🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/motogp/v1/timing-gateway/livetiming-lite)
 
@@ -501,7 +505,7 @@ Retrieve a statistical comparison between two specific riders for a given season
 
 `GET /sportsdata-gateway/riders/pulse/statistics/comparison?season={season}&rider_id1={riderId1}&rider_id2={riderId2}`
 
-`season` `string` **required**\
+`season` `integer` **required**\
 The season year (e.g., `2026`).
 
 `riderId1` `string` **required**\
@@ -511,6 +515,8 @@ The UUID of the first rider.
 The UUID of the second rider.
 
 **Response**
+🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/motogp/v1/sportsdata-gateway/riders/pulse/statistics/comparison?season=2026&rider_id1=e622ec5b-5ccf-457c-a67f-ec028f0ddf6e&rider_id2=5b9af34e-da94-4ca2-9c4c-6be0fc8b1bbc)
+
 ```json
 {
   "e622ec5b-5ccf-457c-a67f-ec028f0ddf6e": {
@@ -627,9 +633,11 @@ The UUID of the second rider.
 ### Get Seasons
 Retrieve a list of MotoGP seasons.
 
-`GET` `/results/seasons`
+`GET /seasons`
 
 **Response**
+🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/motogp/v1/results/seasons)
+
 ```json
 [
   {
@@ -651,7 +659,7 @@ Retrieve a list of MotoGP seasons.
 ### Get Events
 Retrieve a list of MotoGP events for a given season.
 
-`GET` `/results/events?seasonUuid={id}&isFinished={isFinished}`
+`GET /events?seasonUuid={id}&isFinished={isFinished}`
 
 `id` string **required**\
 The season UUID.
@@ -660,6 +668,8 @@ The season UUID.
 Retrieve only past events when `true`. Valid values are `true`, `false`.
 
 **Response**
+🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/motogp/v1/results/events?seasonUuid=db8dc197-c7b2-4c1b-b3a4-6dc534c014ef&isFinished=True)
+
 ```json
 [
   {
@@ -688,12 +698,14 @@ The value of `toad_api_uuid` is a reference to the same event in the Broadcast A
 ### Get Season’s Categories
 Retrieves a list of categories for a given season.
 
-`GET` `/results/categories?seasonUuid={id}`
+`GET /categories?seasonUuid={id}`
 
 `id` string **required**\
 The season ID.
 
 **Response**
+🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/motogp/v1/results/categories?seasonUuid=db8dc197-c7b2-4c1b-b3a4-6dc534c014ef)
+
 ```json
 [
   {
@@ -722,12 +734,14 @@ The season ID.
 ### Get Event’s Categories
 Retrieves a list of categories for a given event.
 
-`GET` `/results/categories?eventUuid={id}`
+`GET /categories?eventUuid={id}`
 
 `id` string **required**\
 The event ID.
 
 **Response**
+🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/motogp/v1/results/categories?eventUuid=4b70d9b1-3f31-4521-9ec1-9d18cd67a32a)
+
 ```json
 [
   {
@@ -756,7 +770,7 @@ The event ID.
 ### Get Sessions
 Retrieve sessions for a given event.
 
-`GET` `/results/sessions?eventUuid={eventId}&categoryUuid={categoryId}`
+`GET /sessions?eventUuid={eventId}&categoryUuid={categoryId}`
 
 `eventId` string **required**\
 The event ID.
@@ -800,7 +814,7 @@ The category ID.
 ### Get Session
 Retrieve a single session
 
-`GET` `/results/sessions/{id}`
+`GET /sessions/{id}`
 
 `id` string **required**\
 The session ID.
@@ -838,7 +852,7 @@ The session ID.
 ### Get Classification
 Retrieve the classification for a single session.
 
-`GET` `/results/session/{id}/classification?seasonYear={seasonYear}&test={isTest}`
+`GET /session/{id}/classification?seasonYear={seasonYear}&test={isTest}`
 
 `id` string **required**\
 The session ID.
@@ -905,7 +919,7 @@ Whether the current session is for an official test (as opposed to a normal race
 ### Get Entry List
 Retrieve the riders partaking in an event.
 
-`GET` `/event/{eventId}/entry?categoryUuid={categoryId}`
+`GET /event/{eventId}/entry?categoryUuid={categoryId}`
 
 `eventId` string **required**\
 The event ID.
@@ -963,7 +977,7 @@ The category ID.
 ### Get Grid Positions
 Retrieve the grid positions for a single event.
 
-`GET` `/results/event/{eventId}/category/{categoryId}/grid`
+`GET /event/{eventId}/category/{categoryId}/grid`
 
 `eventId` string **required**\
 The event ID.
@@ -1004,7 +1018,7 @@ The category ID.
 ### Get Standings
 Retrieve the championship standings for a given season and category.
 
-`GET` `/results/standings?seasonUuid={seasonId}&categoryUuid={categoryId}`
+`GET /standings?seasonUuid={seasonId}&categoryUuid={categoryId}`
 
 `seasonId` string **required**\
 The season ID.
@@ -1059,7 +1073,7 @@ The category ID.
 ### Get Standings Files
 Retrieve the official files relating to the standings.
 
-`GET` `/results/standings/files?seasonUuid={seasonId}&categoryUuid={categoryId}`
+`GET /standings/files?seasonUuid={seasonId}&categoryUuid={categoryId}`
 
 `seasonId` string **required**\
 The season ID.
@@ -1088,7 +1102,7 @@ The category ID.
 ### Get Rider Qualifying Standings (BMW Award)
 Retrieve the qualifying standings.
 
-`GET` `/results/standings/bmwaward?seasonUuid={seasonId}`
+`GET /standings/bmwaward?seasonUuid={seasonId}`
 
 `seasonId` string **required**\
 The season ID.
@@ -1143,7 +1157,7 @@ The season ID.
 ### Get Most wins per track
 Retrieve the riders with the most wins at a specific circuit for a given category.
 
-`GET /results/riders-placement?circuitUuid={circuitId}&categoryName={categoryName}`
+`GET /riders-placement?circuitUuid={circuitId}&categoryName={categoryName}`
 
 `circuitId` `string` **required**\
 The circuit UUID.
@@ -1193,7 +1207,7 @@ The category name: MotoGP, Moto2, Moto3, 50cc, 125cc, 250cc, 500cc.
 ### Get All-time track poles
 Retrieve the riders with the most pole positions at a specific circuit for a given category.
 
-`GET /results/riders-poles?circuitUuid={circuitId}&categoryName={categoryName}`
+`GET /riders-poles?circuitUuid={circuitId}&categoryName={categoryName}`
 
 `circuitId` `string` **required**\
 The circuit UUID.
@@ -1242,7 +1256,7 @@ The category name: MotoGP, Moto2, Moto3, 50cc, 125cc, 250cc, 500cc.
 ### Get All-time track records
 Retrieve the all-time track records for a specific circuit across all available categories.
 
-`GET /results/circuit/{circuitId}/records`
+`GET /circuit/{circuitId}/records`
 
 `circuitId` `string` **required**\
 The circuit ID.
@@ -1318,7 +1332,7 @@ The circuit ID.
 ### Get Session Classification
 Retrieve the final classification, session details, and lap records for a specific session.
 
-`GET /motogp/v2/results/classifications?session={sessionId}&test={test}`
+`GET /classifications?session={sessionId}&test={test}`
 
 `sessionId` `string` **required**\
 The session UUID.
@@ -1454,7 +1468,7 @@ Indicates whether the session is a test session (e.g., `false`).
 ### Get BMW Award Results
 Retrieve the BMW Award standings for a specific season.
 
-`GET /motogp/v2/results/bmw-award?season_year={year}`
+`GET /bmw-award?season_year={year}`
 
 `year` `string` **required**\
 The season year (e.g., `2026`).
@@ -1517,7 +1531,7 @@ The season year (e.g., `2026`).
 ### Get Last 3 Races Info for Every Rider Based on Standings
 Retrieve the world standings for a specific season and category, including the results from the last 3 races and sprints for each rider.
 
-`GET /motogp/v2/results/world-standings?type=rider&season={seasonId}&category={categoryId}`
+`GET /world-standings?type=rider&season={seasonId}&category={categoryId}`
 
 `seasonId` `string` **required**\
 The season UUID.
@@ -1585,7 +1599,7 @@ The category UUID.
 ### Get Event Entry List
 Retrieve the entry list of riders and teams for a specific event and category.
 
-`GET /motogp/v2/results/entries?categoryId={categoryId}&eventId={eventId}`
+`GET /entries?categoryId={categoryId}&eventId={eventId}`
 
 `categoryId` `string` **required**\
 The category UUID.
@@ -1594,6 +1608,7 @@ The category UUID.
 The event UUID.
 
 **Response**
+
 ```json
 {
   "entry": [
@@ -1636,12 +1651,14 @@ The event UUID.
 ### Season Categories
 Retrieve all categories for a single season
 
-`GET` `/categories?seasonYear={seasonYear}`
+`GET /categories?seasonYear={seasonYear}`
 
 `seasonYear` integer **required**\
 The season year. Valid values are `2023`, `2024`, etc.
 
 **Response**
+🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/motogp/v1/categories?seasonYear=2026)
+
 ```json
 [
   {
@@ -1670,12 +1687,14 @@ The season year. Valid values are `2023`, `2024`, etc.
 ### Get Events
 Retrieves the broadcast events.
 
-`GET` `/events?seasonYear={seasonYear}`
+`GET /events?seasonYear={seasonYear}`
 
 `seasonYear` integer **required**\
 The season year. Valid values are `2023`, `2024`, etc.
 
 **Response**
+🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/motogp/v1/events?seasonYear=2026)
+
 ```json
 [
   {
@@ -1826,12 +1845,14 @@ The season year. Valid values are `2023`, `2024`, etc.
 ### Get Event
 Retrieve a single broadcast event
 
-`GET` `/events/{id}`
+`GET /events/{id}`
 
 `id` string **required**\
 The broadcast event ID.
 
 **Response**
+🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/motogp/v1/events/688005f3-5ce3-482d-83ec-c05c8d8eb844)
+
 ```json
 {
   "event_categories": [
@@ -1978,7 +1999,7 @@ The broadcast event ID.
 ### Get Riders
 Retrieve all riders across all categories in the current season.
 
-`GET` `/riders`
+`GET /riders`
 
 **Response**
 ```json
@@ -2050,12 +2071,14 @@ Retrieve all riders across all categories in the current season.
 ### Get Rider
 Retrieve a single rider.
 
-`GET` `/riders/{id}`
+`GET /riders/{id}`
 
 `id` string **required**\
 The rider ID.
 
 **Response**
+🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/motogp/v1/riders/45/stats)
+
 ```json
 {
   "country": {
@@ -2137,12 +2160,14 @@ The rider ID.
 ### Get Rider Statistics
 Retrieve rider statistics.
 
-`GET` `/riders/{legacyId}/stats`
+`GET /riders/{legacyId}/stats`
 
 `legacyId` integer **required**\
 The Rider legacy ID.
 
 **Response**
+🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/motogp/v1/riders/45/stats)
+
 ```json
 {
   "first_grand_prix": [
@@ -2426,39 +2451,43 @@ The Rider legacy ID.
 ### Get Rider Statistics by season
 Retrieve rider statistics, summarised by season.
 
-`GET` `/riders/{legacyId}/statistics`
+`GET /riders/{legacyId}/statistics`
 
 `legacyId` integer **required**\
 The Rider legacy ID.
 
 **Response**
+🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/motogp/v1/riders/45/statistics)
+
 ```json
 [
   {
-    "season": "2023",
-    "category": "MotoGP\u2122",
-    "constructor": "KTM",
-    "starts": 12,
+    "season": "2009",
+    "category": "250cc",
+    "rider": "Roberto Locatelli",
+    "constructor": "Gilera",
+    "starts": 16,
     "first_position": 0,
-    "second_position": 2,
+    "second_position": 0,
     "third_position": 1,
-    "podiums": 3,
+    "podiums": 1,
     "poles": 0,
-    "points": 173,
-    "position": 4
+    "points": 85,
+    "position": 11
   },
   {
-    "season": "2022",
-    "category": "MotoGP\u2122",
-    "constructor": "KTM",
-    "starts": 20,
+    "season": "2008",
+    "category": "250cc",
+    "rider": "Roberto Locatelli",
+    "constructor": "Gilera",
+    "starts": 16,
     "first_position": 0,
-    "second_position": 3,
+    "second_position": 0,
     "third_position": 0,
-    "podiums": 3,
+    "podiums": 0,
     "poles": 0,
-    "points": 188,
-    "position": 6
+    "points": 110,
+    "position": 9
   },
   ...
 ]
@@ -2467,7 +2496,7 @@ The Rider legacy ID.
 ### Get Teams
 Retrieve the teams.
 
-`GET` `/teams?categoryUuid={categoryId}&seasonYear={seasonYear}`
+`GET /teams?categoryUuid={categoryId}&seasonYear={seasonYear}`
 
 `categoryId` string **required**\
 The broadcast category ID.
@@ -2475,14 +2504,9 @@ The broadcast category ID.
 `seasonYear` integer **required**\
 The season year. Valid values are `2023`, `2024`, etc.
 
-**Example**
-
-[Link to endpoint](https://api.motogp.pulselive.com/motogp/v1/teams?categoryUuid=737ab122-76e1-4081-bedb-334caaa18c70&seasonYear=2025)
-
-**Note**
-This is the only known way to get all riders from all seasons, as the `/riders` endpoint only has the riders from the current season.
-
 **Response**
+🔗 [Direct link to endpoint](https://api.motogp.pulselive.com/motogp/v1/teams?categoryUuid=737ab122-76e1-4081-bedb-334caaa18c70&seasonYear=2025)
+
 ```json
 [
   {
