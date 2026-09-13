@@ -9,12 +9,6 @@ import os
 import sys
 from contextlib import asynccontextmanager
 
-# Allows this file to also be run directly as a script
-# (`python3 main.py` from inside app/, or `python3 app/main.py` from the
-# project root), by adding the project root to sys.path so that
-# `from app.client import ...` can be resolved. The recommended way to
-# run the app remains `uvicorn app.main:app --reload` from the project
-# root.
 if __package__ in (None, ""):
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -60,14 +54,7 @@ async def lifespan(app: FastAPI):
     await close_client()
 
 
-# Vercel automatically sets VERCEL_URL to the domain of the current
-# deployment (both in production and in every PR preview). We use it so
-# the OpenAPI schema (and therefore "Try it out" in Swagger UI) always
-# points to the correct domain, with no manual configuration needed.
-_vercel_url = os.getenv("VERCEL_URL")
-API_BASE_URL = os.getenv("API_BASE_URL") or (f"https://{_vercel_url}" if _vercel_url else None)
-servers = [{"url": API_BASE_URL, "description": "Live instance"}] if API_BASE_URL else None
-
+# RIMOSSA LA LOGICA VERCEL_URL PER EVITARE URL ERRATI SU SWAGGER
 app = FastAPI(
     title="MotoGP API (Unofficial)",
     description=DESCRIPTION,
@@ -76,7 +63,7 @@ app = FastAPI(
     contact={"name": "GitHub Repository", "url": "https://github.com/edomari/MotoGP-API"},
     license_info={"name": "MIT"},
     lifespan=lifespan,
-    servers=servers,
+    # Il parametro "servers" è stato rimosso per far gestire l'host dinamicamente a FastAPI
 )
 
 app.add_middleware(
@@ -100,8 +87,5 @@ async def root():
 
 
 if __name__ == "__main__":
-    # Also allows `python3 app/main.py`, in addition to
-    # `uvicorn app.main:app --reload`.
     import uvicorn
-
     uvicorn.run("app.main:app", host="127.0.0.1", port=8000, reload=True)
